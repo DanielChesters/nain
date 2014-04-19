@@ -10,11 +10,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Logger;
 
 public class NainGame extends ApplicationAdapter {
     private World world;
     private OrthographicCamera cam;
     private ShapeRenderer renderer;
+    private static final Logger LOG = new Logger(NainGame.class.getSimpleName(), Logger.DEBUG);
 
     @Override
     public void create () {
@@ -23,7 +25,7 @@ public class NainGame extends ApplicationAdapter {
         cam.update();
         renderer = new ShapeRenderer();
         world = new World();
-        System.out.println(world.getBlocks());
+        LOG.debug(world.getBlocks().toString());
     }
 
     @Override
