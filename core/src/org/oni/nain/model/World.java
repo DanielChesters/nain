@@ -21,7 +21,7 @@ public class World {
         blocks = new ArrayList<>();
         IntStream.rangeClosed(0, MAX_X).forEach(
                 x -> IntStream.rangeClosed(0, MAX_Y).forEach(
-                        y -> blocks.add(new Block(x, y, 0, null))));
+                        y -> blocks.add(new Block(x, y, 0))));
 
 
         Function<Block, List<Block>> blocksBordeningFunc =

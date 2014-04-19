@@ -10,12 +10,21 @@ public class Block {
     private int y;
     private int z;
     private TypeBlock type;
+    private Vector2 vector2;
+    private Rectangle rectangle;
+
 
     public Block(int x, int y, int z, TypeBlock type) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.type = type;
+        this.vector2 = new Vector2(x, y);
+        this.rectangle = new Rectangle(x, y, 1f, 1f);
+    }
+
+    public Block(int x, int y, int z) {
+        this(x, y, z, null);
     }
 
     public int getX() {
@@ -51,11 +60,11 @@ public class Block {
     }
 
     public Vector2 getVector2() {
-        return new Vector2(x, y);
+        return vector2;
     }
 
     public Rectangle getRectangle() {
-        return new Rectangle(x, y, 1f, 1f);
+        return rectangle;
     }
 
     @Override
