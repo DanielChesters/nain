@@ -18,6 +18,7 @@ public class NainGame extends ApplicationAdapter {
         batch = new SpriteBatch();
         img = new Texture("badlogic.jpg");
         world = new World();
+        System.out.println(world.getBlocks());
     }
 
     @Override
