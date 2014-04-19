@@ -1,5 +1,9 @@
 package org.oni.nain;
 
 public class NainConstants {
-    public final static int MAX_SIZE = 10;
+    public static final int MAX_SIZE = 10;
+
+    private NainConstants() {
+
+    }
 }
