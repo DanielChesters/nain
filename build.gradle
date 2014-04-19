@@ -27,6 +27,7 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java"
+    apply plugin: "sonar-runner"
 
 
     dependencies {
@@ -41,6 +42,7 @@ project(":desktop") {
 
 project(":core") {
     apply plugin: "java"
+    apply plugin: "sonar-runner"
 
 
     dependencies {
