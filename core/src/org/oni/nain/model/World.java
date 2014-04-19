@@ -1,6 +1,7 @@
 package org.oni.nain.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -18,7 +19,7 @@ public class World {
     private List<Block> blocks;
 
     public World() {
-        blocks = new ArrayList<>();
+        blocks = Collections.synchronizedList(new ArrayList<>());
         IntStream.rangeClosed(0, MAX_X).forEach(
                 x -> IntStream.rangeClosed(0, MAX_Y).forEach(
                         y -> blocks.add(new Block(x, y, 0))));
@@ -26,16 +27,16 @@ public class World {
 
         Function<Block, List<Block>> blocksBordeningFunc =
                 b -> blocks
-                        .stream()
+                        .stream().parallel()
                         .filter(b1 -> blockInCorner(b, b1)
                                 || blockUpDown(b, b1)
                                 || blockLeftRight(b, b1)).collect(Collectors.toList());
         Map<Block, List<Block>> blocksBordeningMap =
-                blocks.stream().collect(Collectors.toMap(Function.identity(), blocksBordeningFunc));
+                blocks.stream().parallel().collect(Collectors.toMap(Function.identity(), blocksBordeningFunc));
 
         blocksBordeningMap
                 .entrySet()
-                .stream()
+                .stream().parallel()
                 .filter(e -> e.getKey().getType() == null)
                 .forEach(
                         e -> {
