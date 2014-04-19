@@ -8,12 +8,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.oni.nain.NainConstants;
 import org.oni.nain.model.enumeration.TypeBlock;
 
 public class World {
 
-    private static final int MAX_Y = 2;
-    private static final int MAX_X = 2;
+    private static final int MAX_Y = NainConstants.MAX_SIZE - 1;
+    private static final int MAX_X = NainConstants.MAX_SIZE - 1;
     private List<Block> blocks;
 
     public World() {

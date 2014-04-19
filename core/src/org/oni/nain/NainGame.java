@@ -20,8 +20,8 @@ public class NainGame extends ApplicationAdapter {
 
     @Override
     public void create () {
-        cam = new OrthographicCamera(3, 3);
-        cam.position.set(1.5f, 1.5f, 0);
+        cam = new OrthographicCamera(NainConstants.MAX_SIZE, NainConstants.MAX_SIZE);
+        cam.position.set(NainConstants.MAX_SIZE/2, NainConstants.MAX_SIZE/2, 0);
         cam.update();
         renderer = new ShapeRenderer();
         world = new World();
