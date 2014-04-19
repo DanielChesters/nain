@@ -16,7 +16,7 @@ public class World {
         blocks = new ArrayList<>();
         IntStream.range(-MAX_X, MAX_X).forEach(
                 x -> IntStream.range(-MAX_Y, MAX_Y).forEach(
-                        y -> blocks.add(new Block(x, y, 0, TypeBlock.AIR))));
+                        y -> blocks.add(new Block(x, y, 0, TypeBlock.getRandom()))));
     }
 
     public List<Block> getBlocks() {
