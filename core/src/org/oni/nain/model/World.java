@@ -26,12 +26,9 @@ public class World {
         Function<Block, List<Block>> blocksBordeningFunc =
                 b -> blocks
                         .stream()
-                        .filter(b1 -> (Math.abs(b.getX() - b1.getX()) == 1 && Math.abs(b.getY()
-                                - b1.getY()) == 1)
-                                || (Math.abs(b.getX() - b1.getX()) == 0 && Math.abs(b.getY()
-                                        - b1.getY()) == 1)
-                                || (Math.abs(b.getX() - b1.getX()) == 1 && Math.abs(b.getY()
-                                        - b1.getY()) == 0)).collect(Collectors.toList());
+                        .filter(b1 -> blockInCorner(b, b1)
+                                || blockUpDown(b, b1)
+                                || blockLeftRight(b, b1)).collect(Collectors.toList());
         Map<Block, List<Block>> blocksBordeningMap =
                 blocks.stream().collect(Collectors.toMap(Function.identity(), blocksBordeningFunc));
 
@@ -46,6 +43,21 @@ public class World {
                                     .filter(b -> new Random().nextBoolean())
                                     .forEach(b -> b.setType(e.getKey().getType()));
                         });
+    }
+
+    private boolean blockLeftRight(Block blockCenter, Block b) {
+        return Math.abs(blockCenter.getX() - b.getX()) == 1 && Math.abs(blockCenter.getY()
+                - b.getY()) == 0;
+    }
+
+    private boolean blockUpDown(Block blockCenter, Block b) {
+        return Math.abs(blockCenter.getX() - b.getX()) == 0 && Math.abs(blockCenter.getY()
+                - b.getY()) == 1;
+    }
+
+    private boolean blockInCorner(Block blockCenter, Block b) {
+        return Math.abs(blockCenter.getX() - b.getX()) == 1 && Math.abs(blockCenter.getY()
+                - b.getY()) == 1;
     }
 
     public List<Block> getBlocks() {
