@@ -46,4 +46,9 @@ public class Block {
     public void setType(TypeBlock type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Block [x=" + x + ", y=" + y + ", z=" + z + ", type=" + type + "]";
+    }
 }
