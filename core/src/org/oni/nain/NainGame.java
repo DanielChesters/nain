@@ -46,6 +46,7 @@ public class NainGame extends ApplicationAdapter {
                     renderer.setColor(Color.BLACK);
                     break;
                 default:
+                    LOG.error("Block type unknown : " + b);
                     break;
             }
             Rectangle rectangle = b.getRectangle();
