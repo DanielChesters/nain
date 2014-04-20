@@ -22,7 +22,7 @@ public class World {
         blocks = Collections.synchronizedList(new ArrayList<>());
         IntStream.rangeClosed(0, MAX_X).forEach(
                 x -> IntStream.rangeClosed(0, MAX_Y).forEach(
-                        y -> blocks.add(new Block(x, y, 0))));
+                        y -> blocks.add(new Block(x, y))));
 
 
         Function<Block, List<Block>> blocksBordeningFunc =

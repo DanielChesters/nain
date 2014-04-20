@@ -1,5 +1,8 @@
 package org.oni.nain.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.oni.nain.model.enumeration.Biome;
 
 import com.badlogic.gdx.math.Rectangle;
@@ -8,23 +11,28 @@ import com.badlogic.gdx.math.Vector2;
 public class Block {
     private int x;
     private int y;
-    private int z;
     private Biome biome;
-    private Vector2 vector2;
+    private Vector2 center;
+    private Set<Vector2> corners;
     private Rectangle rectangle;
 
 
-    public Block(int x, int y, int z, Biome biome) {
+    public Block(int x, int y, Biome biome) {
         this.x = x;
         this.y = y;
-        this.z = z;
         this.biome = biome;
-        this.vector2 = new Vector2(x, y);
+        this.center = new Vector2(x + 0.5f, y + 0.5f);
+        this.corners = new HashSet<>();
+        this.corners.add(new Vector2(x, y));
+        this.corners.add(new Vector2(x + 1, y));
+        this.corners.add(new Vector2(x, y + 1));
+        this.corners.add(new Vector2(x + 1, y + 1));
+
         this.rectangle = new Rectangle(x, y, 1f, 1f);
     }
 
-    public Block(int x, int y, int z) {
-        this(x, y, z, null);
+    public Block(int x, int y) {
+        this(x, y, null);
     }
 
     public int getX() {
@@ -43,14 +51,6 @@ public class Block {
         this.y = y;
     }
 
-    public int getZ() {
-        return z;
-    }
-
-    public void setZ(int z) {
-        this.z = z;
-    }
-
     public Biome getBiome() {
         return biome;
     }
@@ -60,7 +60,7 @@ public class Block {
     }
 
     public Vector2 getVector2() {
-        return vector2;
+        return center;
     }
 
     public Rectangle getRectangle() {
@@ -69,6 +69,6 @@ public class Block {
 
     @Override
     public String toString() {
-        return "Block [x=" + x + ", y=" + y + ", z=" + z + ", type=" + biome + "]";
+        return "Block [x=" + x + ", y=" + y + ", biome=" + biome + "]";
     }
 }
