@@ -5,7 +5,7 @@ import java.util.Random;
 import com.badlogic.gdx.graphics.Color;
 
 public enum TypeBlock {
-    DIRT(Color.ORANGE),
+    DIRT(new Color(0.59f, 0.29f, 0, 0)),
     WATER(Color.BLUE),
     AIR(Color.BLACK);
 
