@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.oni.nain.NainConstants;
-import org.oni.nain.model.enumeration.TypeBlock;
+import org.oni.nain.model.enumeration.Biome;
 
 public class World {
 
@@ -40,7 +40,7 @@ public class World {
                 .filter(e -> e.getKey().getType() == null)
                 .forEach(
                         e -> {
-                            e.getKey().setType(TypeBlock.getRandom());
+                            e.getKey().setType(Biome.getRandom());
                             e.getValue().stream().filter(b -> b.getType() == null)
                                     .filter(b -> new Random().nextBoolean())
                                     .forEach(b -> b.setType(e.getKey().getType()));

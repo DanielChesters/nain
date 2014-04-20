@@ -1,6 +1,6 @@
 package org.oni.nain.model;
 
-import org.oni.nain.model.enumeration.TypeBlock;
+import org.oni.nain.model.enumeration.Biome;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -9,12 +9,12 @@ public class Block {
     private int x;
     private int y;
     private int z;
-    private TypeBlock type;
+    private Biome type;
     private Vector2 vector2;
     private Rectangle rectangle;
 
 
-    public Block(int x, int y, int z, TypeBlock type) {
+    public Block(int x, int y, int z, Biome type) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -51,11 +51,11 @@ public class Block {
         this.z = z;
     }
 
-    public TypeBlock getType() {
+    public Biome getType() {
         return type;
     }
 
-    public void setType(TypeBlock type) {
+    public void setType(Biome type) {
         this.type = type;
     }
 

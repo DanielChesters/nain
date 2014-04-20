@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.graphics.Color;
 
-public enum TypeBlock {
+public enum Biome {
     DIRT(new Color(0.59f, 0.29f, 0, 0)),
     WATER(Color.BLUE),
     AIR(Color.BLACK);
@@ -13,11 +13,11 @@ public enum TypeBlock {
 
     private Color color;
 
-    private TypeBlock(Color color) {
+    private Biome(Color color) {
         this.color = color;
     }
 
-    public static TypeBlock getRandom() {
+    public static Biome getRandom() {
         return values()[RND.nextInt(values().length)];
     }
 
