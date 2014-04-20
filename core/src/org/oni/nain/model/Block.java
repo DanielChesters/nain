@@ -59,12 +59,16 @@ public class Block {
         this.biome = biome;
     }
 
-    public Vector2 getVector2() {
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public Vector2 getCenter() {
         return center;
     }
 
-    public Rectangle getRectangle() {
-        return rectangle;
+    public Set<Vector2> getCorners() {
+        return corners;
     }
 
     @Override
