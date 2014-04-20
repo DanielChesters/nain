@@ -34,7 +34,7 @@ public class NainGame extends ApplicationAdapter {
         renderer.setProjectionMatrix(cam.combined);
         renderer.begin(ShapeType.Filled);
         world.getBlocks().stream().forEach(b -> {
-            renderer.setColor(b.getType().getColor());
+            renderer.setColor(b.getBiome().getColor());
             Rectangle rectangle = b.getRectangle();
             renderer.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
         });

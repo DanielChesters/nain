@@ -9,16 +9,16 @@ public class Block {
     private int x;
     private int y;
     private int z;
-    private Biome type;
+    private Biome biome;
     private Vector2 vector2;
     private Rectangle rectangle;
 
 
-    public Block(int x, int y, int z, Biome type) {
+    public Block(int x, int y, int z, Biome biome) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.type = type;
+        this.biome = biome;
         this.vector2 = new Vector2(x, y);
         this.rectangle = new Rectangle(x, y, 1f, 1f);
     }
@@ -51,12 +51,12 @@ public class Block {
         this.z = z;
     }
 
-    public Biome getType() {
-        return type;
+    public Biome getBiome() {
+        return biome;
     }
 
-    public void setType(Biome type) {
-        this.type = type;
+    public void setBiome(Biome biome) {
+        this.biome = biome;
     }
 
     public Vector2 getVector2() {
@@ -69,6 +69,6 @@ public class Block {
 
     @Override
     public String toString() {
-        return "Block [x=" + x + ", y=" + y + ", z=" + z + ", type=" + type + "]";
+        return "Block [x=" + x + ", y=" + y + ", z=" + z + ", type=" + biome + "]";
     }
 }

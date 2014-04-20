@@ -37,13 +37,13 @@ public class World {
         blocksBordeningMap
                 .entrySet()
                 .stream().parallel()
-                .filter(e -> e.getKey().getType() == null)
+                .filter(e -> e.getKey().getBiome() == null)
                 .forEach(
                         e -> {
-                            e.getKey().setType(Biome.getRandom());
-                            e.getValue().stream().filter(b -> b.getType() == null)
+                            e.getKey().setBiome(Biome.getRandom());
+                            e.getValue().stream().filter(b -> b.getBiome() == null)
                                     .filter(b -> new Random().nextBoolean())
-                                    .forEach(b -> b.setType(e.getKey().getType()));
+                                    .forEach(b -> b.setBiome(e.getKey().getBiome()));
                         });
     }
 
