@@ -4,7 +4,6 @@ import org.oni.nain.model.World;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -35,20 +34,7 @@ public class NainGame extends ApplicationAdapter {
         renderer.setProjectionMatrix(cam.combined);
         renderer.begin(ShapeType.Filled);
         world.getBlocks().stream().forEach(b -> {
-            switch (b.getType()) {
-                case DIRT:
-                    renderer.setColor(Color.ORANGE);
-                    break;
-                case WATER:
-                    renderer.setColor(Color.BLUE);
-                    break;
-                case AIR:
-                    renderer.setColor(Color.BLACK);
-                    break;
-                default:
-                    LOG.error("Block type unknown : " + b);
-                    break;
-            }
+            renderer.setColor(b.getType().getColor());
             Rectangle rectangle = b.getRectangle();
             renderer.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
         });
