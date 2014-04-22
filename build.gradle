@@ -14,7 +14,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = 'Nain'
-        gdxVersion = '1.0-SNAPSHOT'
+        gdxVersion = '1.0.0'
         roboVMVersion = '0.0.11'
     }
 
