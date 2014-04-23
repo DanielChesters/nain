@@ -1,5 +1,9 @@
 package org.oni.nain;
 
+import java.util.List;
+
+import org.oni.nain.generator.Generator;
+import org.oni.nain.model.Block;
 import org.oni.nain.model.World;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -23,7 +27,8 @@ public class NainGame extends ApplicationAdapter {
         cam.position.set(NainConstants.MAX_SIZE/2, NainConstants.MAX_SIZE/2, 0);
         cam.update();
         renderer = new ShapeRenderer();
-        world = new World();
+        List<Block> blocks = Generator.INSTANCE.generateBlocks(NainConstants.MAX_SIZE - 1);
+        world = new World(blocks);
         LOG.debug(world.getBlocks().toString());
     }
 
