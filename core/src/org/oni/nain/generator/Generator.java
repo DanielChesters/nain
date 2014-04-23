@@ -21,8 +21,8 @@ public enum Generator {
      */
     public List<Block> generateBlocks(int size) {
         List<Block> blocks = Collections.synchronizedList(new ArrayList<>());
-        IntStream.rangeClosed(0, size).forEach(
-                x -> IntStream.rangeClosed(0, size).forEach(
+        IntStream.rangeClosed(0, size - 1).forEach(
+                x -> IntStream.rangeClosed(0, size - 1).forEach(
                         y -> blocks.add(new Block(x, y))));
 
 
