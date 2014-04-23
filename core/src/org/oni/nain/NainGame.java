@@ -27,7 +27,7 @@ public class NainGame extends ApplicationAdapter {
         cam.position.set(NainConstants.MAX_SIZE/2, NainConstants.MAX_SIZE/2, 0);
         cam.update();
         renderer = new ShapeRenderer();
-        List<Block> blocks = Generator.INSTANCE.generateBlocks(NainConstants.MAX_SIZE - 1);
+        List<Block> blocks = Generator.INSTANCE.generateBlocks(NainConstants.MAX_SIZE);
         world = new World(blocks);
         LOG.debug(world.getBlocks().toString());
     }
