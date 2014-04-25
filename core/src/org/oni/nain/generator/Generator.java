@@ -16,8 +16,9 @@ public enum Generator {
     INSTANCE;
 
     /**
-     * @param size
-     * @return
+     * Generate Block of map
+     * @param size size of each axe of map
+     * @return List of Block for the map
      */
     public List<Block> generateBlocks(int size) {
         List<Block> blocks = Collections.synchronizedList(new ArrayList<>());
@@ -26,23 +27,23 @@ public enum Generator {
                         y -> blocks.add(new Block(x, y))));
 
 
-        Function<Block, List<Block>> blocksBordeningFunc =
+        Function<Block, List<Block>> blocksBorderingFunc =
                 b -> blocks
-                        .stream().parallel()
+                        .parallelStream()
                         .filter(b1 -> blockInCorner(b, b1)
                                 || blockUpDown(b, b1)
                                 || blockLeftRight(b, b1)).collect(Collectors.toList());
-        Map<Block, List<Block>> blocksBordeningMap =
-                blocks.stream().parallel().collect(Collectors.toMap(Function.identity(), blocksBordeningFunc));
+        Map<Block, List<Block>> blocksBorderingMap =
+                blocks.parallelStream().collect(Collectors.toMap(Function.identity(), blocksBorderingFunc));
 
-        blocksBordeningMap
+        blocksBorderingMap
                 .entrySet()
-                .stream().parallel()
+                .parallelStream()
                 .filter(e -> e.getKey().getBiome() == null)
                 .forEach(
                         e -> {
                             e.getKey().setBiome(Biome.getRandom());
-                            e.getValue().stream().filter(b -> b.getBiome() == null)
+                            e.getValue().parallelStream().filter(b -> b.getBiome() == null)
                                     .filter(b -> new Random().nextBoolean())
                                     .forEach(b -> b.setBiome(e.getKey().getBiome()));
                         });
@@ -50,9 +51,10 @@ public enum Generator {
     }
 
     /**
-     * @param blockCenter
-     * @param b
-     * @return
+     * Test if a block is on left or right of a other block
+     * @param blockCenter block on center
+     * @param b block to test
+     * @return if b is on left or right of blockCenter
      */
     private boolean blockLeftRight(Block blockCenter, Block b) {
         return Math.abs(blockCenter.getX() - b.getX()) == 1 && Math.abs(blockCenter.getY()
@@ -60,9 +62,10 @@ public enum Generator {
     }
 
     /**
-     * @param blockCenter
-     * @param b
-     * @return
+     * Test if a block is on up or down of a other block
+     * @param blockCenter block on center
+     * @param b block to test
+     * @return if b is on up or down of blockCenter
      */
     private boolean blockUpDown(Block blockCenter, Block b) {
         return Math.abs(blockCenter.getX() - b.getX()) == 0 && Math.abs(blockCenter.getY()
@@ -70,9 +73,10 @@ public enum Generator {
     }
 
     /**
-     * @param blockCenter
-     * @param b
-     * @return
+     * Test if a block is on corner of a other block
+     * @param blockCenter block on center
+     * @param b block to test
+     * @return if b is on corners of blockCenter
      */
     private boolean blockInCorner(Block blockCenter, Block b) {
         return Math.abs(blockCenter.getX() - b.getX()) == 1 && Math.abs(blockCenter.getY()
