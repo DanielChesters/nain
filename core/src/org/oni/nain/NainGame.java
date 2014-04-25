@@ -23,11 +23,11 @@ public class NainGame extends ApplicationAdapter {
 
     @Override
     public void create () {
-        cam = new OrthographicCamera(NainConstants.MAX_SIZE, NainConstants.MAX_SIZE);
-        cam.position.set(NainConstants.MAX_SIZE/2, NainConstants.MAX_SIZE/2, 0);
+        cam = new OrthographicCamera(Constants.MAX_SIZE, Constants.MAX_SIZE);
+        cam.position.set(Constants.MAX_SIZE/2, Constants.MAX_SIZE/2, 0);
         cam.update();
         renderer = new ShapeRenderer();
-        List<Block> blocks = Generator.INSTANCE.generateBlocks(NainConstants.MAX_SIZE);
+        List<Block> blocks = Generator.INSTANCE.generateBlocks(Constants.MAX_SIZE);
         world = new World(blocks);
         LOG.debug(world.getBlocks().toString());
     }
