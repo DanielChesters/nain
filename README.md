@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/danielchesters/nain.png?label=ready&title=Ready)](https://waffle.io/danielchesters/nain)
 nain
 ====
 
